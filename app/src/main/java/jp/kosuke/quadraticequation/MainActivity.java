@@ -23,13 +23,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String exp = "二次方程式の解を求めます。\\n{ax² + bx + c = 0}の形で入力してください。\\n解が1つの場合は、同じ値が2つ表示されます。\n各欄には " + Integer.MIN_VALUE + " ～ " + Integer.MAX_VALUE + ") 範囲で入力してください。\nまた、aの欄に0は入力しないでください。";
+        String exp = "二次方程式の解を求めます。\n{ax² + bx + c = 0}の形で入力してください。\n解が1つの場合は、同じ値が2つ表示されます。\n各欄には " + Integer.MIN_VALUE + " ～ " + Integer.MAX_VALUE + ") 範囲で入力してください。\nまた、aの欄に0は入力しないでください。";
 
         final EditText editA = (EditText)findViewById(R.id.editA);
         final EditText editB = (EditText)findViewById(R.id.editB);
         final EditText editC = (EditText)findViewById(R.id.editC);
         final TextView ansV1 = (TextView)findViewById(R.id.ansV1);
         final TextView ansV2 = (TextView)findViewById(R.id.ansV2);
+        final TextView expTV = (TextView)findViewById(R.id.tv1);
+        expTV.setText(exp);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
