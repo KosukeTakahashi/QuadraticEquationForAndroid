@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String exp = "二次方程式の解を求めます。\n{ax² + bx + c = 0}の形で入力してください。\n解が1つの場合は、同じ値が2つ表示されます。\n各欄には " + Integer.MIN_VALUE + " ～ " + Integer.MAX_VALUE + ") 範囲で入力してください。\nまた、aの欄に0は入力しないでください。";
+        String exp = "二次方程式の解を求めます。\n{ax² + bx + c = 0}の形で入力してください。\n解が1つの場合は、同じ値が2つ表示されます。\n各欄には " + Integer.MIN_VALUE + " ～ " + Integer.MAX_VALUE + "の範囲で入力してください。\nまた、aの欄に0は入力しないでください。";
 
         final EditText editA = (EditText)findViewById(R.id.editA);
         final EditText editB = (EditText)findViewById(R.id.editB);
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 boolean clean = false;
                 //計算処理
                 int a = 1;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         ansV2.setText("");
                     }
                 } else if (a == 0) {
-                    Snackbar.make(view, "aの欄に0が入力されています。aに0は入力しないでください。", Snackbar.LENGTH_SHORT);
+                    Snackbar.make(view, "aの欄に0が入力されています。aに0は入力しないでください。", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
@@ -162,7 +163,11 @@ public class MainActivity extends AppCompatActivity {
             //分母が負の数
             x *= -1;
             ret[1] = String.valueOf(w * (-1));
-            ret[0] = x + "±" + outside + "√(" + inside + ")";
+            if (outside != 1) {
+                ret[0] = x + "±" + outside + "√(" + inside + ")";
+            } else {
+                ret[0] = x + "±√(" + inside + ")";
+            }
         }
 
         if (Calculation.isInt(Math.sqrt((double)inside))) {
